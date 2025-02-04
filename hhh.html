@@ -9,160 +9,164 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
-        /* Devil-Themed Background */
+        /* Animated Background */
         body {
             text-align: center;
-            font-family: 'Lucida Console', Courier, monospace;
-            overflow: hidden;
-            background: linear-gradient(45deg, #1a0000, #330000, #660000);
-            background-size: 300% 300%;
-            animation: backgroundAnimation 8s infinite alternate;
+            background: linear-gradient(135deg, #000000, #5a0000);
+            background-size: 400% 400%;
+            animation: gradientMove 8s infinite alternate;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            color: #ff4444;
-            text-shadow: 0px 0px 8px red;
         }
 
-        @keyframes backgroundAnimation {
+        @keyframes gradientMove {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
         }
 
-        /* Dialog Box */
-        .dialog-box {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(50, 0, 0, 0.9);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
-            text-align: center;
-            z-index: 1000;
-            width: 80%;
-            max-width: 300px;
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-            color: #ff6666;
-            text-shadow: 0px 0px 5px red;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translate(-50%, -55%); }
-            to { opacity: 1; transform: translate(-50%, -50%); }
-        }
-
-        .dialog-box p {
-            font-size: 16px;
+        /* Header */
+        .header {
+            font-size: 28px;
             font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-bottom: 10px;
         }
 
-        .dialog-box button {
-            background: linear-gradient(90deg, #990000, #cc0000);
-            color: white;
-            font-weight: bold;
-            padding: 8px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0px 3px 8px rgba(255, 0, 0, 0.7);
-            transition: all 0.3s ease-in-out;
+        .header::before {
+            content: "📨"; /* Telegram Icon */
+            font-size: 28px;
         }
 
-        .dialog-box button:hover {
-            background: linear-gradient(90deg, #cc0000, #990000);
-            box-shadow: 0px 5px 12px rgba(255, 0, 0, 1);
-        }
-
-        /* Container */
+        /* Main Container */
         .container {
-            background: rgba(10, 0, 0, 0.9);
+            background: rgba(255, 255, 255, 0.1);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.8);
+            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.5);
+            color: white;
+            width: 90%;
+            max-width: 350px;
         }
 
-        /* Prediction Result Box */
+        /* Prediction Box */
         .result-box {
-            width: 250px;
+            width: 100%;
             height: 100px;
-            margin: 20px auto;
+            margin: 15px auto;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 10px;
             font-size: 28px;
             font-weight: bold;
-            background: linear-gradient(45deg, #660000, #990000);
-            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+            background: linear-gradient(45deg, #ff0000, #800000);
+            box-shadow: 0px 4px 8px rgba(255, 0, 0, 0.5);
             color: white;
             transition: 0.3s;
-            text-shadow: 0px 0px 8px red;
+        }
+
+        /* Blink Effect */
+        .blink {
+            animation: blink 0.3s linear 2;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
         }
 
         /* Predict Button */
         #predictBtn {
-            background: linear-gradient(90deg, #990000, #cc0000);
+            background: linear-gradient(90deg, #ff0000, #ff4b4b);
             color: white;
             font-weight: bold;
             padding: 12px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 30px;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+            width: 100%;
         }
 
-        #predictBtn:hover {
-            background: linear-gradient(90deg, #cc0000, #990000);
-            box-shadow: 0px 8px 16px rgba(255, 0, 0, 1);
-            transform: scale(1.1);
+        #predictBtn:active {
+            transform: scale(0.9);
+            box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.8);
         }
 
-        /* Telegram Link */
-        .telegram-link {
+        /* Countdown Message */
+        .countdown-msg {
+            color: yellow;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Telegram Section */
+        .telegram-section {
             margin-top: 20px;
             font-size: 16px;
             color: white;
         }
 
-        .telegram-link a {
-            color: yellow;
-            text-decoration: none;
+        .telegram-link {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 10px;
             font-weight: bold;
+            display: inline-block;
+            color: yellow;
+        }
+
+        .telegram-btn {
+            background: yellow;
+            color: black;
+            font-weight: bold;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+        }
+
+        .telegram-btn:hover {
+            background: #ffd700;
         }
     </style>
 </head>
 <body>
 
-    <!-- Dialog Box -->
-    <div class="dialog-box" id="dialogBox">
-        <p>This app is made by Apkmodderking.<br>Search <b>@apkmodderking</b> on Telegram and join the channel.</p>
-        <button onclick="hideDialog()">OK</button>
-    </div>
+    <!-- Header -->
+    <div class="header">APKMODDERKING</div>
 
     <!-- Main Content -->
     <div class="container">
-        <h2>Andar or Bahar Prediction</h2>
+        <h2>Andar Bahar Prediction</h2>
         <div class="result-box" id="resultBox">?</div>
         <button onclick="predictResult()" id="predictBtn">Predict</button>
+        <div class="countdown-msg" id="countdownMsg"></div>
     </div>
 
-    <!-- Telegram Link at Bottom -->
-    <div class="telegram-link">
-        Join us on Telegram: <a href="https://t.me/apkmodderking" target="_blank">Click Here</a>
+    <!-- Telegram Section -->
+    <div class="telegram-section">
+        <div class="telegram-link" id="telegramLink">https://telegram.me/apkmodderking</div>
+        <button class="telegram-btn" onclick="openTelegram()">Join</button>
     </div>
 
     <script>
         let lastClickTime = 0;
         let cooldown = 60;
+        let countdownInterval;
+        let lastResult = "";
 
         function getRandomResult() {
             return Math.random() < 0.5 ? "Andar" : "Bahar";
@@ -174,34 +178,38 @@
             let timeLeft = cooldown - timePassed;
 
             if (timeLeft > 0) {
-                alert(`Please wait ${timeLeft} sec before clicking again!`);
+                document.getElementById("countdownMsg").innerText = `Try again in ${timeLeft} sec`;
                 return;
             }
 
             lastClickTime = currentTime;
             let resultBox = document.getElementById('resultBox');
-            let result = getRandomResult();
-            resultBox.innerText = result;
+            let newResult = getRandomResult();
 
-            if (result === "Andar") {
-                resultBox.style.background = "linear-gradient(45deg, #990000, #cc0000)";
-            } else {
-                resultBox.style.background = "linear-gradient(45deg, #330000, #660000)";
+            if (newResult === lastResult) {
+                resultBox.classList.add("blink");
+                setTimeout(() => resultBox.classList.remove("blink"), 600);
             }
+
+            resultBox.innerText = newResult;
+            lastResult = newResult;
+            startCountdown();
         }
 
-        // Show dialog box every 2 minutes
-        function showDialog() {
-            document.getElementById("dialogBox").style.display = "block";
+        function startCountdown() {
+            clearInterval(countdownInterval);
+            countdownInterval = setInterval(updateCountdown, 1000);
         }
 
-        function hideDialog() {
-            document.getElementById("dialogBox").style.display = "none";
-            setTimeout(showDialog, 120000);
+        function updateCountdown() {
+            let timeLeft = cooldown - Math.floor((new Date().getTime() - lastClickTime) / 1000);
+            document.getElementById("countdownMsg").innerText = timeLeft > 0 ? `Try again in ${timeLeft} sec` : "";
+            if (timeLeft <= 0) clearInterval(countdownInterval);
         }
 
-        // First time show dialog box after 5 seconds
-        setTimeout(showDialog, 5000);
+        function openTelegram() {
+            window.open("https://telegram.me/apkmodderking", "_blank");
+        }
     </script>
 
 </body>
